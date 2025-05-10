@@ -76,8 +76,16 @@ def bikesharing_etl():
   
     @task
     def stream_logs(filepath: str):
-        logger = logging.getLogger('../logs/etl_capstone_bikesharing.log')
-        df = pd.read_parquet(filepath)
+        logger = logging.getLogger("bike_etl_logger")
+        logger.setLevel(logging.WARNING)
+    
+        if not logger.handlers:
+            file_handler = logging.FileHandler("../logs/etl_capstone_bikesharing.log")
+            filemode = 'w'
+            formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+            file_handler.setFormatter(formatter)
+            logger.addHandler(file_handler)
+            df = pd.read_parquet(filepath)
         
         def stream_trips(df_):
             for _, row in df_.iterrows():
@@ -115,7 +123,7 @@ def bikesharing_etl():
                 lat="start_lat",
                 lon="start_lng",
                 radius=5,
-                center=dict(lat=df["start_lat"].mean(), lon=df["start_lng"].mean()),
+                center={"lat": df["start_lat"].mean(), "lon"=df["start_lng"].mean()},
                 zoom=11,
                 map_style="carto-positron",
                 title="Bikeshare Start Location Heatmap"
