@@ -138,6 +138,7 @@ def bikesharing_etl():
     clean_and_load = clean_and_load_parquet(transform_file)
     vis_heatmap = visualize_heatmap(clean_and_load)
 
+
     transform_file >> stream_and_log
     transform_file >> clean_and_load
     clean_and_load >> vis_heatmap
