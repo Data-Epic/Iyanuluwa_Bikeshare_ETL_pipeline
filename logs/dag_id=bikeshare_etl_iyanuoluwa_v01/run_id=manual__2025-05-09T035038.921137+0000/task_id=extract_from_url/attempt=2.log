@@ -1,0 +1,4 @@
+{"timestamp":"2025-05-09T03:56:36.209789","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-05-09T03:56:36.213489","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/bikeshare_etl_iyanuoluwa.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-05-09T03:56:51.516257Z","level":"info","event":"Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?","chan":"stdout","logger":"task"}
+{"timestamp":"2025-05-09T03:56:47.983910","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator"}
